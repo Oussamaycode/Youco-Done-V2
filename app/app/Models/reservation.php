@@ -3,8 +3,24 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class reservation extends Model
 {
-    //
+    protected $fillable=['heure_reservation','user_id','restaurant_id','horaire_id'];
+
+    public function user():BelongsTo{
+
+       return $this-belongsTo(User::class);
+    }
+
+     public function restaurant():BelongsTo{
+
+       return $this-belongsTo(Restaurant::class);
+    }
+
+    public function horaire():BelongsTo{
+
+       return $this-belongsTo(Horaire::class);
+    }
+
 }

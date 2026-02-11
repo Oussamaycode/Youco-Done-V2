@@ -260,15 +260,11 @@
 <label class="block text-xs font-bold text-[#638888] uppercase tracking-wider">Select Date</label>
 <span class="text-[10px] text-primary font-bold uppercase tracking-tight">Nov 2023</span>
 </div>
-<div class="bg-[#f0f4f4] dark:bg-[#2a3a3a] rounded-lg p-3">
+<select name="horaire" class="bg-[#f0f4f4] dark:bg-[#2a3a3a] rounded-lg p-3">
 <div class="calendar-grid text-center mb-2">
-<div class="text-[10px] font-bold text-[#638888] py-1">S</div>
-<div class="text-[10px] font-bold text-[#638888] py-1">M</div>
-<div class="text-[10px] font-bold text-[#638888] py-1">T</div>
-<div class="text-[10px] font-bold text-[#638888] py-1">W</div>
-<div class="text-[10px] font-bold text-[#638888] py-1">T</div>
-<div class="text-[10px] font-bold text-[#638888] py-1">F</div>
-<div class="text-[10px] font-bold text-[#638888] py-1">S</div>
+@foreach ($horaires as $horaire)
+<option class="text-[10px] font-bold text-[#638888] py-1">{{$horaire->jour}}</div>
+@endforeach
 </div>
 <div class="calendar-grid text-center gap-1">
 <div class="text-xs text-[#638888] py-2 opacity-30 cursor-not-allowed">29</div>

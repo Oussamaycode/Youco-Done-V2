@@ -16,6 +16,7 @@ return new class extends Migration
             $table->time('heure_reservation');
             $table->foreignId('user_id')->constrained();
             $table->foreignId('restaurant_id')->constrained();
+            $table->foreignId('horaire_id')->constrained();
             $table->timestamps();
         });
     }

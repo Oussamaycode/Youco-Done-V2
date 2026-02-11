@@ -157,11 +157,12 @@
 </div>
 </div>
 </div>
-<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2">
-                                Book Now
-                            </button>
+<a href="{{route('reservation.index')}}"class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2">
+                                book now
+</a>
 </div>
 </div>
+@endforeach
 <!-- Pagination -->
 <div class="mt-auto p-8 flex items-center justify-center gap-2 border-t border-[#f0f4f4] dark:border-white/10 bg-white/50 dark:bg-background-dark/50 backdrop-blur-sm">
 <button class="flex items-center justify-center size-10 rounded-lg border border-[#f0f4f4] dark:border-white/10 hover:bg-primary hover:text-white transition-colors">
@@ -184,4 +185,6 @@
 <span class="material-symbols-outlined">map</span>
         View Map
     </button>
-</body></html>
+</body>
+
+</html>
