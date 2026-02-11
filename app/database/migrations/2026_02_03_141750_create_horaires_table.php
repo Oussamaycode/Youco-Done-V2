@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('horaires', function (Blueprint $table) {
             $table->id();
             $table->date('jour');
-            $table->foreignId('restaurant_id')->constraiend();
             $table->foreignId('crenau_id')->constraiend();
             $table->timestamps();
         });
