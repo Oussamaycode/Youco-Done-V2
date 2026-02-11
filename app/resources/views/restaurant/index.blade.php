@@ -135,6 +135,7 @@
 </div>
 <!-- Grid of Restaurant Cards -->
 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 p-6">
+@foreach ($restaurants as $restaurant)
 <!-- Card 1 -->
 <div class="group bg-white dark:bg-white/5 rounded-xl overflow-hidden border border-[#f0f4f4] dark:border-white/10 shadow-sm hover:shadow-lg transition-all duration-300">
 <div class="relative aspect-video">
@@ -146,9 +147,9 @@
 </div>
 <div class="p-4 flex flex-col gap-3">
 <div>
-<h3 class="text-[#111818] dark:text-white text-lg font-bold">The Blue Lobster</h3>
+<h3 class="text-[#111818] dark:text-white text-lg font-bold">{{$restaurant->nom}}</h3>
 <div class="flex items-center justify-between mt-1">
-<p class="text-[#638888] text-sm">Seafood • $$$ • Upper East Side</p>
+<p class="text-[#638888] text-sm">{{$restaurant->typecuisine}}</p>
 <div class="flex items-center gap-1 text-primary">
 <span class="material-symbols-outlined text-[16px] fill-1">star</span>
 <span class="text-sm font-bold text-[#111818] dark:text-white">4.8</span>
@@ -159,132 +160,6 @@
 <button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2">
                                 Book Now
                             </button>
-</div>
-</div>
-<!-- Card 2 -->
-<div class="group bg-white dark:bg-white/5 rounded-xl overflow-hidden border border-[#f0f4f4] dark:border-white/10 shadow-sm hover:shadow-lg transition-all duration-300">
-<div class="relative aspect-video">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Cozy indian dining room with warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE4tFtvgO0Q0SRUBc2YNdUyivfe11PCKR7NRp5s6nULPiiMtygsXgSZ_UGIHzbflirw8LOBQZl9W3Pdx5cSDcZogexTb3pYR2MSLSlby8DYexucHVcMWQv0oKiJL_38jzbZhB7cAYm1x_uPV6AllrIbzEcZmxhvo0XPzs5ewt11CObnEqkfeFKeFg6XzJOASfsJYHN_5r9MB4wfb03KSb8SN021KsCMPm00upATmr3udcCwGfIGC4YgdoYSnKDier-6OKELmfg0MM"/>
-<button class="absolute top-3 right-3 p-2 rounded-full bg-white/80 backdrop-blur-sm text-red-500">
-<span class="material-symbols-outlined text-[20px] fill-1">favorite</span>
-</button>
-</div>
-<div class="p-4 flex flex-col gap-3">
-<div>
-<h3 class="text-[#111818] dark:text-white text-lg font-bold">Saffron Spice</h3>
-<div class="flex items-center justify-between mt-1">
-<p class="text-[#638888] text-sm">Indian • $$ • Chelsea</p>
-<div class="flex items-center gap-1 text-primary">
-<span class="material-symbols-outlined text-[16px] fill-1">star</span>
-<span class="text-sm font-bold text-[#111818] dark:text-white">4.5</span>
-<span class="text-[#638888] text-xs font-normal">(180)</span>
-</div>
-</div>
-</div>
-<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2">
-                                Book Now
-                            </button>
-</div>
-</div>
-<!-- Card 3 -->
-<div class="group bg-white dark:bg-white/5 rounded-xl overflow-hidden border border-[#f0f4f4] dark:border-white/10 shadow-sm hover:shadow-lg transition-all duration-300">
-<div class="relative aspect-video">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Rustic italian pasta house interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTFXyd4G-uEjQmb5UiOh9fczy9Bq_Q2arcLe25ygzMgCufVBJQUxPXWc4ERHX6x0faWVVdZLUW5CVF-b3O0ueYhoVSy3_orkGrvvjJVMOHFqkr6Uk5jAAriHSzF75ZH9S3e-eCv-E5E2hqMYXMOvsmnIdQb0gc7Z1LiHP1xp23V_gAvxYdQiq4D4SBkmP_Hd9xyWXm279Ka71ZwCmpcZEcvjSw87EodvVp5nt89WE0QM-ua2F-dTK_6MC3PZ8wX6OFhUxs7nEc898"/>
-<button class="absolute top-3 right-3 p-2 rounded-full bg-white/80 backdrop-blur-sm text-[#111818] hover:text-red-500 transition-colors">
-<span class="material-symbols-outlined text-[20px]">favorite</span>
-</button>
-</div>
-<div class="p-4 flex flex-col gap-3">
-<div>
-<h3 class="text-[#111818] dark:text-white text-lg font-bold">Pasta Palace</h3>
-<div class="flex items-center justify-between mt-1">
-<p class="text-[#638888] text-sm">Italian • $$ • Greenwich Village</p>
-<div class="flex items-center gap-1 text-primary">
-<span class="material-symbols-outlined text-[16px] fill-1">star</span>
-<span class="text-sm font-bold text-[#111818] dark:text-white">4.2</span>
-<span class="text-[#638888] text-xs font-normal">(310)</span>
-</div>
-</div>
-</div>
-<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2">
-                                Book Now
-                            </button>
-</div>
-</div>
-<!-- Card 4 -->
-<div class="group bg-white dark:bg-white/5 rounded-xl overflow-hidden border border-[#f0f4f4] dark:border-white/10 shadow-sm hover:shadow-lg transition-all duration-300">
-<div class="relative aspect-video">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Lush green vegan restaurant with plants" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_eahnd0yNoZHdWAZeqIKAPXTzGhy4QxEAQHS3MS86txbpVlqbD0aTQp6kherFdOGcL2NV6tdpPvC-tNxuw5i7oLt0Snmy8lBpyER99chofXoHPvv1PJ2LILgFYtevQG_xJAfCSzOiogysA372pDg8F2jzuXJ8XFoXJwS4joEBqwiu-rOhKyaDvTlYGuZ2ydCC4SDUSZChDiR2NQ3Q9DEl_oUPQ022oNjT04JXhRC6ygu_ATO7OyohZQhhMLxpkawM85NjiiHqXbo"/>
-<button class="absolute top-3 right-3 p-2 rounded-full bg-white/80 backdrop-blur-sm text-[#111818] hover:text-red-500 transition-colors">
-<span class="material-symbols-outlined text-[20px]">favorite</span>
-</button>
-</div>
-<div class="p-4 flex flex-col gap-3">
-<div>
-<h3 class="text-[#111818] dark:text-white text-lg font-bold">Green Garden</h3>
-<div class="flex items-center justify-between mt-1">
-<p class="text-[#638888] text-sm">Vegan • $$$ • Soho</p>
-<div class="flex items-center gap-1 text-primary">
-<span class="material-symbols-outlined text-[16px] fill-1">star</span>
-<span class="text-sm font-bold text-[#111818] dark:text-white">4.7</span>
-<span class="text-[#638888] text-xs font-normal">(95)</span>
-</div>
-</div>
-</div>
-<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2">
-                                Book Now
-                            </button>
-</div>
-</div>
-<!-- Card 5 -->
-<div class="group bg-white dark:bg-white/5 rounded-xl overflow-hidden border border-[#f0f4f4] dark:border-white/10 shadow-sm hover:shadow-lg transition-all duration-300">
-<div class="relative aspect-video">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Minimalist japanese sushi bar setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCP6MibZPdpRm05yPIjcst5bOu4gNwhSud4LV7Gz_DFFAWUHnd35z64E0BNzEEyBwlZlom4M_ELaPN6iK3Gnx5jcey7KU_4IFBtTyuBDLwnjnlo50MaBW09tSEM5al7OppzxNYYGof_77i8flrSpOcc2c42Ej6K6ayumWrK8uXsoThlof4SiGLUZ1ReOJ65rIcHL0XVggsM7IEH7kxpkZ7-QPEvrGHK5ltTimQMUcRsoTKh-Yc_hTQCHz9mQUjZ1T9R4sSCAvwjLRk"/>
-<button class="absolute top-3 right-3 p-2 rounded-full bg-white/80 backdrop-blur-sm text-[#111818] hover:text-red-500 transition-colors">
-<span class="material-symbols-outlined text-[20px]">favorite</span>
-</button>
-</div>
-<div class="p-4 flex flex-col gap-3">
-<div>
-<h3 class="text-[#111818] dark:text-white text-lg font-bold">Sushi Zen</h3>
-<div class="flex items-center justify-between mt-1">
-<p class="text-[#638888] text-sm">Japanese • $$$$ • Midtown</p>
-<div class="flex items-center gap-1 text-primary">
-<span class="material-symbols-outlined text-[16px] fill-1">star</span>
-<span class="text-sm font-bold text-[#111818] dark:text-white">4.9</span>
-<span class="text-[#638888] text-xs font-normal">(420)</span>
-</div>
-</div>
-</div>
-<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2">
-                                Book Now
-                            </button>
-</div>
-</div>
-<!-- Card 6 -->
-<div class="group bg-white dark:bg-white/5 rounded-xl overflow-hidden border border-[#f0f4f4] dark:border-white/10 shadow-sm hover:shadow-lg transition-all duration-300">
-<div class="relative aspect-video">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Classic wood-paneled American steakhouse" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBs-e5nMLgzHEXlDh2k7W-hAQ3RcX54dux8jlwl0_cT9QYzyI3d2Th5rdlwU9RIQVQmEkVSYB1vevARv3f3c1kf9LpCGlrxUUzLvBgtoGeAB0yHZKrb-_bQA2ekEOIGRDdxA6pw60JRXnl_Sr4vhJlZvbv_Pcvi8P7lM7F-jseBfY9nelGqTRcqcN8Z00qsCBTJewmXjg2WtnRLHCC94c4yxtyLYeF6a0kwUL0HiGKfYv6MGSfMfMtkiY9WEaoshVNQrZxM8Zautqk"/>
-<button class="absolute top-3 right-3 p-2 rounded-full bg-white/80 backdrop-blur-sm text-[#111818] hover:text-red-500 transition-colors">
-<span class="material-symbols-outlined text-[20px]">favorite</span>
-</button>
-</div>
-<div class="p-4 flex flex-col gap-3">
-<div>
-<h3 class="text-[#111818] dark:text-white text-lg font-bold">Steakhouse 71</h3>
-<div class="flex items-center justify-between mt-1">
-<p class="text-[#638888] text-sm">American • $$$$ • Financial District</p>
-<div class="flex items-center gap-1 text-primary">
-<span class="material-symbols-outlined text-[16px] fill-1">star</span>
-<span class="text-sm font-bold text-[#111818] dark:text-white">4.6</span>
-<span class="text-[#638888] text-xs font-normal">(150)</span>
-</div>
-</div>
-</div>
-<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2">
-                                Book Now
-                            </button>
-</div>
 </div>
 </div>
 <!-- Pagination -->
