@@ -1,3 +1,12 @@
+@if ($errors->any())
+    <div class="bg-red-100 text-red-700 p-4">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <!DOCTYPE html>
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
@@ -243,6 +252,9 @@
 <div class="bg-white dark:bg-[#1e2e2e] p-6 rounded-2xl shadow-xl border border-[#dce5e5] dark:border-[#2a3a3a]">
 <h3 class="text-xl font-bold mb-6 text-[#111818] dark:text-white">Book a Table</h3>
 <form method="GET" action="{{ route('reservation.create') }}">
+    <input type="hidden" name="restaurant_id" value="{{ $restaurant_id ?? request('restaurant_id') }}">
+
+<input type="hidden" name="restaurant_id" value="{{ $restaurant_id ?? request('restaurant_id') }}">
     <label class="block text-xs font-bold text-[#638888] uppercase mb-2">Select Date</label>
     <select name="horaire_id" onchange="this.form.submit()" class="w-full bg-[#f0f4f4] rounded-lg h-12 text-sm">
         <option value="">-- Choose a Day --</option>
@@ -257,8 +269,8 @@
 @if(!empty($timeSlots))
     <form method="POST" action="{{ route('reservation.store') }}" class="mt-5">
         @csrf
+        <input type="hidden" name="restaurant_id" value="{{ request('restaurant_id') }}">
         <input type="hidden" name="horaire_id" value="{{ $selectedHoraireId }}">
-
         <label class="block text-xs font-bold text-[#638888] uppercase mb-2">Select Time</label>
         <select name="heure_reservation" class="w-full bg-[#f0f4f4] rounded-lg h-12 text-sm mb-6">
             @foreach ($timeSlots as $slot)

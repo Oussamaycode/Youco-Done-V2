@@ -157,7 +157,7 @@
 </div>
 </div>
 </div>
-<a href="{{route('reservation.index')}}"class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2">
+<a href="{{ route('reservation.index', ['restaurant_id' => $restaurant->id]) }}" class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2">
                                 book now
 </a>
 </div>

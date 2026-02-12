@@ -26,8 +26,14 @@ Route::get('register', function () {return view('auth.register');})->name('regis
     Route::get('/createmenu', [MenuController::class, 'create'])->name('menu.create');
     Route::post('/createmenu', [MenuController::class, 'store'])->name('menu.store');
     Route::post('/plat', [PlatController::class, 'store'])->name('plat.store');
-    Route::get('/reservation',[ReservationController::class,'index'])->name('reservation.index');
-    Route::post('/reservation', [ReservationController::class, 'create'])->name('reservation.create');
+    // The main page
+Route::get('/reservation', [ReservationController::class, 'index'])->name('reservation.index');
+
+// The route that handles the selection and calculates hours
+Route::get('/reservation/setup', [ReservationController::class, 'create'])->name('reservation.create');
+
+// The final store
+Route::post('/reservation/confirm', [ReservationController::class, 'store'])->name('reservation.store');
 // }
 // );
 
