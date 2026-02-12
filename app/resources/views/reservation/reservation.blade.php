@@ -242,72 +242,35 @@
 <div class="sticky top-24 space-y-4">
 <div class="bg-white dark:bg-[#1e2e2e] p-6 rounded-2xl shadow-xl border border-[#dce5e5] dark:border-[#2a3a3a]">
 <h3 class="text-xl font-bold mb-6 text-[#111818] dark:text-white">Book a Table</h3>
-<form method='POST' action="{{route('reservation.create')}}">
-    @csrf
-<div class="mb-5">
-<label class="block text-xs font-bold text-[#638888] uppercase tracking-wider mb-2">Number of Guests</label>
-<div class="relative">
-<select class="form-select w-full bg-[#f0f4f4] dark:bg-[#2a3a3a] border-none rounded-lg h-12 text-sm focus:ring-primary appearance-none cursor-pointer">
-<option>2 People</option>
-<option>3 People</option>
-<option>4 People</option>
-<option>5 People</option>
-<option>6+ People</option>
-</select>
-<span class="material-symbols-outlined absolute right-3 top-3 text-[#638888] pointer-events-none">group</span>
-</div>
-</div>
-<div class="mb-5">
-<div class="flex justify-between items-center mb-2">
-<label class="block text-xs font-bold text-[#638888] uppercase tracking-wider">Select Date</label>
-<span class="text-[10px] text-primary font-bold uppercase tracking-tight">Nov 2023</span>
-</div>
-<select name="horaire_id" onchange="this.form.submit()" class="text-[10px] font-bold text-[#638888]">
-    <option value="">Select a day</option>
-    @foreach ($horaires as $horaire)
-<option value="{{ $horaire->id }}" {{ $selectedDay = $horaire->jour ? 'selected' : '' }}>
+<form method="GET" action="{{ route('reservation.create') }}">
+    <label class="block text-xs font-bold text-[#638888] uppercase mb-2">Select Date</label>
+    <select name="horaire_id" onchange="this.form.submit()" class="w-full bg-[#f0f4f4] rounded-lg h-12 text-sm">
+        <option value="">-- Choose a Day --</option>
+        @foreach ($horaires as $horaire)
+            <option value="{{ $horaire->id }}" {{ isset($selectedHoraireId) && $selectedHoraireId == $horaire->id ? 'selected' : '' }}>
                 {{ $horaire->jour }}
-</option>
-    @endforeach
-</select>
-<div class="flex items-center gap-2 mt-2 px-1">
-<span class="size-2 bg-primary rounded-full"></span>
-<span class="text-[10px] text-[#638888]">Available for booking</span>
-</div>
-</div>
-</div>
-@if($selectedDay)
-        <div class="mt-4">
-            <label class="block mb-2">Pick an Hour:</label>
-            <select name="horaire_id" class="text-[10px] font-bold text-[#638888] py-1 border rounded">
-                @foreach ($hours as $h)
-                    <option value="{{ $h->id }}">{{ $h->heure }}</option>
-                @endforeach
-            </select>
-        </div>
-
-        <button type="submit" class="mt-4 bg-[#638888] text-white px-4 py-2 rounded">
-            Book Table
-        </button>
-    @endif
-<div class="mb-6 p-4 rounded-xl bg-primary/5 border border-primary/20">
-<div class="flex justify-between items-start mb-2">
-<div class="flex flex-col">
-<span class="text-xs font-bold text-primary uppercase tracking-wider">Required Deposit</span>
-<span class="text-xs text-[#638888]">Refundable up to 24h before</span>
-</div>
-<span class="text-xl font-bold text-primary">£20.00</span>
-</div>
-<div class="flex items-center gap-2 mt-3 pt-3 border-t border-primary/10">
-<span class="material-symbols-outlined text-sm text-green-500" style="font-variation-settings: 'FILL' 1">verified_user</span>
-<span class="text-[10px] font-medium text-[#638888]">Secure Payment Powered by Youco'Done</span>
-</div>
-</div>
-<button class="w-full bg-primary text-white h-14 rounded-xl font-bold text-base shadow-lg shadow-primary/20 hover:bg-opacity-90 transition-all flex items-center justify-center gap-3">
-<span class="material-symbols-outlined">payments</span>
-                            Pay &amp; Confirm Reservation
-                        </button>
+            </option>
+        @endforeach
+    </select>
 </form>
+
+@if(!empty($timeSlots))
+    <form method="POST" action="{{ route('reservation.store') }}" class="mt-5">
+        @csrf
+        <input type="hidden" name="horaire_id" value="{{ $selectedHoraireId }}">
+
+        <label class="block text-xs font-bold text-[#638888] uppercase mb-2">Select Time</label>
+        <select name="heure_reservation" class="w-full bg-[#f0f4f4] rounded-lg h-12 text-sm mb-6">
+            @foreach ($timeSlots as $slot)
+                <option value="{{ $slot }}">{{ $slot }}</option>
+            @endforeach
+        </select>
+
+        <button type="submit" class="w-full bg-primary text-white h-14 rounded-xl font-bold shadow-lg">
+            Confirm Reservation
+        </button>
+    </form>
+@endif
 <div class="flex items-center justify-center gap-1.5 mt-4">
 <span class="material-symbols-outlined text-sm text-[#638888]">lock</span>
 <span class="text-[10px] text-[#638888]">Encrypted &amp; secure checkout</span>
