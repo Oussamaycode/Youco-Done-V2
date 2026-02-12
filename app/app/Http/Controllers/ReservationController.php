@@ -9,8 +9,14 @@ use Illuminate\Supporrt\Facades\DB;
 
 class ReservationController extends Controller
 {
+    public function index (){
+    
+    $horaires=Horaire::all();
+    return view ('reservation.reservation',compact('horaires'));
+    $hours=Horaie::all();
+    }
 
-public function create(Request $request)
+   public function create(Request $request)
 {
     // 1. Get all unique days for the first dropdown
     $days = Horaire::select('jour')->distinct()->get();
