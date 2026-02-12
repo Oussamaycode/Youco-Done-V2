@@ -243,6 +243,7 @@
 <div class="bg-white dark:bg-[#1e2e2e] p-6 rounded-2xl shadow-xl border border-[#dce5e5] dark:border-[#2a3a3a]">
 <h3 class="text-xl font-bold mb-6 text-[#111818] dark:text-white">Book a Table</h3>
 <form method='POST' action="{{route('reservation.create')}}">
+    @csrf
 <div class="mb-5">
 <label class="block text-xs font-bold text-[#638888] uppercase tracking-wider mb-2">Number of Guests</label>
 <div class="relative">
