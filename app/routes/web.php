@@ -27,6 +27,7 @@ Route::get('register', function () {return view('auth.register');})->name('regis
     Route::post('/createmenu', [MenuController::class, 'store'])->name('menu.store');
     Route::post('/plat', [PlatController::class, 'store'])->name('plat.store');
     Route::get('/reservation',[ReservationController::class,'index'])->name('reservation.index');
+    Route::post('/reservation', [ReservationController::class, 'create'])->name('reservation.create');
 // }
 // );
 

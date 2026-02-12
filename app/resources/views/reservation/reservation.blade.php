@@ -242,6 +242,7 @@
 <div class="sticky top-24 space-y-4">
 <div class="bg-white dark:bg-[#1e2e2e] p-6 rounded-2xl shadow-xl border border-[#dce5e5] dark:border-[#2a3a3a]">
 <h3 class="text-xl font-bold mb-6 text-[#111818] dark:text-white">Book a Table</h3>
+<form method='POST' action="{{route('reservation.create')}}">
 <div class="mb-5">
 <label class="block text-xs font-bold text-[#638888] uppercase tracking-wider mb-2">Number of Guests</label>
 <div class="relative">
@@ -260,48 +261,34 @@
 <label class="block text-xs font-bold text-[#638888] uppercase tracking-wider">Select Date</label>
 <span class="text-[10px] text-primary font-bold uppercase tracking-tight">Nov 2023</span>
 </div>
-<select name="horaire" class="bg-[#f0f4f4] dark:bg-[#2a3a3a] rounded-lg p-3">
-<div class="calendar-grid text-center mb-2">
-@foreach ($horaires as $horaire)
-<option class="text-[10px] font-bold text-[#638888] py-1">{{$horaire->jour}}</div>
-@endforeach
-</div>
-<div class="calendar-grid text-center gap-1">
-<div class="text-xs text-[#638888] py-2 opacity-30 cursor-not-allowed">29</div>
-<div class="text-xs text-[#638888] py-2 opacity-30 cursor-not-allowed">30</div>
-<div class="text-xs text-[#638888] py-2 opacity-30 cursor-not-allowed">31</div>
-<button class="text-xs font-medium py-2 rounded hover:bg-white dark:hover:bg-[#3a4a4a] transition-colors">1</button>
-<button class="text-xs font-medium py-2 rounded hover:bg-white dark:hover:bg-[#3a4a4a] transition-colors">2</button>
-<button class="text-xs font-medium py-2 rounded hover:bg-white dark:hover:bg-[#3a4a4a] transition-colors">3</button>
-<button class="text-xs font-medium py-2 rounded bg-primary text-white font-bold">4</button>
-<button class="text-xs font-medium py-2 rounded hover:bg-white dark:hover:bg-[#3a4a4a] transition-colors">5</button>
-<button class="text-xs font-medium py-2 rounded hover:bg-white dark:hover:bg-[#3a4a4a] transition-colors">6</button>
-<button class="text-xs font-medium py-2 rounded hover:bg-white dark:hover:bg-[#3a4a4a] transition-colors">7</button>
-<button class="text-xs font-medium py-2 rounded hover:bg-white dark:hover:bg-[#3a4a4a] transition-colors">8</button>
-<button class="text-xs font-medium py-2 rounded hover:bg-white dark:hover:bg-[#3a4a4a] transition-colors">9</button>
-<button class="text-xs font-medium py-2 rounded hover:bg-white dark:hover:bg-[#3a4a4a] transition-colors">10</button>
-<button class="text-xs font-medium py-2 rounded hover:bg-white dark:hover:bg-[#3a4a4a] transition-colors">11</button>
-<button class="text-xs font-medium py-2 rounded hover:bg-white dark:hover:bg-[#3a4a4a] transition-colors">12</button>
-</div>
+<select name="horaire_id" onchange="this.form.submit()" class="text-[10px] font-bold text-[#638888]">
+    <option value="">Select a day</option>
+    @foreach ($horaires as $horaire)
+<option value="{{ $horaire->id }}" {{ $selectedDay = $horaire->jour ? 'selected' : '' }}>
+                {{ $horaire->jour }}
+</option>
+    @endforeach
+</select>
 <div class="flex items-center gap-2 mt-2 px-1">
 <span class="size-2 bg-primary rounded-full"></span>
 <span class="text-[10px] text-[#638888]">Available for booking</span>
 </div>
 </div>
 </div>
-<div class="mb-6">
-<label class="block text-xs font-bold text-[#638888] uppercase tracking-wider mb-2">Available Times</label>
-<div class="grid grid-cols-4 gap-2">
-<button class="h-9 text-[11px] font-bold rounded-lg border-2 border-[#dce5e5] dark:border-[#3a4a4a] hover:border-primary transition-colors text-[#111818] dark:text-white">18:00</button>
-<button class="h-9 text-[11px] font-bold rounded-lg border-2 border-primary bg-primary text-white">18:30</button>
-<button class="h-9 text-[11px] font-bold rounded-lg border-2 border-[#dce5e5] dark:border-[#3a4a4a] hover:border-primary transition-colors text-[#111818] dark:text-white">19:00</button>
-<button class="h-9 text-[11px] font-bold rounded-lg border-2 border-[#dce5e5] dark:border-[#3a4a4a] hover:border-primary transition-colors text-[#111818] dark:text-white">19:30</button>
-<button class="h-9 text-[11px] font-bold rounded-lg border-2 border-[#dce5e5] dark:border-[#3a4a4a] hover:border-primary transition-colors text-[#111818] dark:text-white">20:00</button>
-<button class="h-9 text-[11px] font-bold rounded-lg border-2 border-[#dce5e5] dark:border-[#3a4a4a] hover:border-primary transition-colors text-[#111818] dark:text-white">20:30</button>
-<button class="h-9 text-[11px] font-bold rounded-lg border-2 border-[#dce5e5] dark:border-[#3a4a4a] hover:border-primary transition-colors text-[#111818] dark:text-white">21:00</button>
-<button class="h-9 text-[11px] font-bold rounded-lg border-2 border-[#dce5e5] dark:border-[#3a4a4a] opacity-50 cursor-not-allowed text-[#638888]">21:30</button>
-</div>
-</div>
+@if($selectedDay)
+        <div class="mt-4">
+            <label class="block mb-2">Pick an Hour:</label>
+            <select name="horaire_id" class="text-[10px] font-bold text-[#638888] py-1 border rounded">
+                @foreach ($hours as $h)
+                    <option value="{{ $h->id }}">{{ $h->heure }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <button type="submit" class="mt-4 bg-[#638888] text-white px-4 py-2 rounded">
+            Book Table
+        </button>
+    @endif
 <div class="mb-6 p-4 rounded-xl bg-primary/5 border border-primary/20">
 <div class="flex justify-between items-start mb-2">
 <div class="flex flex-col">
@@ -319,11 +306,13 @@
 <span class="material-symbols-outlined">payments</span>
                             Pay &amp; Confirm Reservation
                         </button>
+</form>
 <div class="flex items-center justify-center gap-1.5 mt-4">
 <span class="material-symbols-outlined text-sm text-[#638888]">lock</span>
 <span class="text-[10px] text-[#638888]">Encrypted &amp; secure checkout</span>
 </div>
 </div>
+
 <div class="bg-white dark:bg-[#1e2e2e] p-4 rounded-2xl shadow-sm border border-[#dce5e5] dark:border-[#2a3a3a]">
 <div class="w-full h-40 bg-gray-200 dark:bg-gray-800 rounded-lg mb-3 bg-cover bg-center" data-alt="Map location of the restaurant" data-location="London" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCu02zS8AMjYvjVmRrygwxBe3zWhIhu3XV1hHm53M3gD36BnwTI6H8Tm70GIKSlgH6fYppW4aIRFiUJRU1KqrYeb2DBleGw7hq_ccrrep2UZh6ZtDtZPD6JfNm_K1TS5iO9S5RNoGYr4DVdVwXIsduBpf2NxhtLQrT5OmnOnZgBmvMz-M9wdGTsUi3YytltcHmcZ3GiS3NURCb5LJB-bq4YisLC3xFghKKI-ZnMVwYReDaU7uq75GAO_nRze9clZhTGXorAs4E-okw');"></div>
 <h4 class="text-sm font-bold">How to get here</h4>

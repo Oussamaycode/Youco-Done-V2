@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('crenaus', function (Blueprint $table) {
             $table->id();
-            $table->string('heuredebut');
-            $table->string('heurefin');
+            $table->time('heuredebut');
+            $table->time('heurefin');
             $table->timestamps();
         });
     }

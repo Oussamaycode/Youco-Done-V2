@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('horaires', function (Blueprint $table) {
             $table->id();
-            $table->date('jour');
+            $table->string('jour');
             $table->foreignId('crenau_id')->constraiend();
             $table->timestamps();
         });
