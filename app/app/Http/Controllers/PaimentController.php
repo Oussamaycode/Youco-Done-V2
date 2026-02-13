@@ -30,7 +30,7 @@ class PaimentController extends Controller
      */
     public function store(StorePaimentRequest $request)
     {
-        //
+        
     }
 
     /**
