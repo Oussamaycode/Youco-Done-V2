@@ -57,7 +57,6 @@ class ReservationController extends Controller
         $reservation->restaurant_id = $request->restaurant_id;
         $reservation->save();
 
-        return redirect()->route('reservation.index')
-                         ->with('success', 'Your table has been reserved for ' . $request->heure_reservation);
+        return view('paiement.index')->with('success', 'Your table has been reserved for ' . $request->heure_reservation);
     }
 }
